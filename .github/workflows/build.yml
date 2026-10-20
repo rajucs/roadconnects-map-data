@@ -1,0 +1,77 @@
+name: Build map data
+
+# Every month (and on demand) each country's OpenStreetMap extract is cut into one small file and published as a release asset
+# (tag "data"). The Road Connects site downloads the countries its admin switched on. Run by hand: Actions > Build map data > Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Only these country codes, comma separated (empty = all), e.g. bd,in'
+        required: false
+        default: ''
+  schedule:
+    - cron: '17 3 2 * *'
+
+permissions:
+  contents: write
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: m
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          only = [s.strip() for s in os.environ.get('ONLY', '').split(',') if s.strip()]
+          rows = [c for c in json.load(open('countries.json')) if not only or c['code'] in only]
+          print('matrix=' + json.dumps({'include': rows}))
+          PY
+        env:
+          ONLY: ${{ github.event.inputs.only }}
+
+  build:
+    needs: list
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.list.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install osmium
+      - name: Download ${{ matrix.name }}
+        run: curl -fL --retry 5 --retry-delay 20 -o country.osm.pbf "https://download.geofabrik.de/${{ matrix.geofabrik }}-latest.osm.pbf"
+      - name: Cut the places out
+        run: python3 tools/osm_pois.py country.osm.pbf "${{ matrix.code }}" --tier "${{ matrix.tier }}" --out dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.code }}
+          path: dist/*
+          retention-days: 3
+
+  publish:
+    needs: build
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Manifest and release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ls -la dist
+          gh release view data >/dev/null 2>&1 || gh release create data --title "Map data" --notes "Per-country place files built from OpenStreetMap (ODbL). See manifest.json."
+          gh release download data --pattern manifest.json --dir old >/dev/null 2>&1 || true
+          python3 tools/make_manifest.py dist old/manifest.json dist/manifest.json
+          gh release upload data dist/*.ndjson.gz dist/manifest.json --clobber

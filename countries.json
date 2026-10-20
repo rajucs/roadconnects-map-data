@@ -1,0 +1,9 @@
+[
+  {"code": "bd", "name": "Bangladesh", "geofabrik": "asia/bangladesh", "tier": "full", "box": [20.55, 88.0, 26.7, 92.75]},
+  {"code": "in", "name": "India", "geofabrik": "asia/india", "tier": "lite", "box": [6.5, 68.0, 35.7, 97.5]},
+  {"code": "np", "name": "Nepal", "geofabrik": "asia/nepal", "tier": "full", "box": [26.3, 80.0, 30.5, 88.3]},
+  {"code": "bt", "name": "Bhutan", "geofabrik": "asia/bhutan", "tier": "full", "box": [26.7, 88.7, 28.4, 92.2]},
+  {"code": "cn", "name": "China", "geofabrik": "asia/china", "tier": "lite", "box": [18.0, 73.5, 53.6, 135.1]},
+  {"code": "th", "name": "Thailand", "geofabrik": "asia/thailand", "tier": "full", "box": [5.5, 97.3, 20.5, 105.7]},
+  {"code": "my", "name": "Malaysia, Singapore and Brunei", "geofabrik": "asia/malaysia-singapore-brunei", "tier": "full", "box": [0.8, 99.6, 7.4, 119.3]}
+]
