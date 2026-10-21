@@ -5,5 +5,12 @@
   {"code": "bt", "name": "Bhutan", "geofabrik": "asia/bhutan", "tier": "full", "box": [26.7, 88.7, 28.4, 92.2]},
   {"code": "cn", "name": "China", "geofabrik": "asia/china", "tier": "lite", "box": [18.0, 73.5, 53.6, 135.1]},
   {"code": "th", "name": "Thailand", "geofabrik": "asia/thailand", "tier": "full", "box": [5.5, 97.3, 20.5, 105.7]},
-  {"code": "my", "name": "Malaysia, Singapore and Brunei", "geofabrik": "asia/malaysia-singapore-brunei", "tier": "full", "box": [0.8, 99.6, 7.4, 119.3]}
+  {"code": "my", "name": "Malaysia, Singapore and Brunei", "geofabrik": "asia/malaysia-singapore-brunei", "tier": "full", "box": [0.8, 99.6, 7.4, 119.3]},
+  {"code": "lk", "name": "Sri Lanka", "geofabrik": "asia/sri-lanka", "tier": "full", "box": [5.8, 79.4, 9.9, 82.0]},
+  {"code": "pk", "name": "Pakistan", "geofabrik": "asia/pakistan", "tier": "full", "box": [[23.5, 60.8, 29.0, 71.2], [29.0, 60.8, 32.5, 74.6], [32.5, 60.8, 37.1, 73.8]]},
+  {"code": "id", "name": "Indonesia", "geofabrik": "asia/indonesia", "tier": "lite", "box": [[-6.2, 95.0, 5.95, 105.9], [-11.1, 105.9, 2.7, 141.0]]},
+  {"code": "vn", "name": "Vietnam", "geofabrik": "asia/vietnam", "tier": "full", "box": [[8.4, 104.3, 12.0, 109.5], [12.0, 106.5, 16.5, 109.5], [16.5, 105.5, 20.6, 109.5], [20.6, 102.1, 23.4, 109.0]]},
+  {"code": "jp", "name": "Japan", "geofabrik": "asia/japan", "tier": "lite", "box": [[30.2, 129.6, 41.6, 142.3], [41.3, 139.3, 45.6, 146.0], [24.0, 122.9, 30.2, 131.5]]},
+  {"code": "gcc", "name": "Saudi Arabia, UAE, Oman, Qatar, Kuwait and Bahrain", "geofabrik": "asia/gcc-states", "tier": "full", "box": [16.0, 34.5, 32.2, 59.9]},
+  {"code": "tr", "name": "Turkey", "geofabrik": "europe/turkey", "tier": "full", "box": [35.8, 25.6, 42.2, 44.9]}
 ]
