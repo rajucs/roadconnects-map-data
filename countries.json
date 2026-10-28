@@ -12,5 +12,7 @@
   {"code": "vn", "name": "Vietnam", "geofabrik": "asia/vietnam", "tier": "full", "box": [[8.4, 104.3, 12.0, 109.5], [12.0, 106.5, 16.5, 109.5], [16.5, 105.5, 20.6, 109.5], [20.6, 102.1, 23.4, 109.0]]},
   {"code": "jp", "name": "Japan", "geofabrik": "asia/japan", "tier": "lite", "box": [[30.2, 129.6, 41.6, 142.3], [41.3, 139.3, 45.6, 146.0], [24.0, 122.9, 30.2, 131.5]]},
   {"code": "gcc", "name": "Saudi Arabia, UAE, Oman, Qatar, Kuwait and Bahrain", "geofabrik": "asia/gcc-states", "tier": "full", "box": [16.0, 34.5, 32.2, 59.9]},
-  {"code": "tr", "name": "Turkey", "geofabrik": "europe/turkey", "tier": "full", "box": [35.8, 25.6, 42.2, 44.9]}
+  {"code": "tr", "name": "Turkey", "geofabrik": "europe/turkey", "tier": "full", "box": [35.8, 25.6, 42.2, 44.9]},
+  {"code": "ph", "name": "Philippines", "geofabrik": "asia/philippines", "tier": "lite", "box": [4.5, 116.5, 21.5, 127.0]},
+  {"code": "ch", "name": "Switzerland", "geofabrik": "europe/switzerland", "tier": "full", "box": [45.8, 5.9, 47.9, 10.6]}
 ]
